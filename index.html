@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사다리타기 게임</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-title">
+        <span class="badge">MINI GAME</span>
+        <h1>사다리타기</h1>
+      </div>
+      <p class="header-desc">참여자와 결과를 입력한 뒤 사다리 타기를 시작해보세요.</p>
+    </header>
+
+    <section class="toolbar" aria-label="게임 설정">
+      <div class="player-count-control">
+        <span class="control-label">참여 인원</span>
+        <div class="stepper">
+          <button type="button" id="btn-decrease" class="stepper-btn" aria-label="인원 줄이기">−</button>
+          <span id="player-count-display" class="stepper-value">4명</span>
+          <button type="button" id="btn-increase" class="stepper-btn" aria-label="인원 늘리기">+</button>
+        </div>
+      </div>
+
+      <div class="toolbar-actions">
+        <label id="blind-toggle-wrap" class="blind-toggle hidden">
+          <input type="checkbox" id="chk-blind" />
+          <span>사다리 가리기</span>
+        </label>
+        <button type="button" id="btn-reset-inputs" class="btn btn-ghost">입력 초기화</button>
+        <button type="button" id="btn-start" class="btn btn-primary">사다리 타기 시작</button>
+        <button type="button" id="btn-show-all" class="btn btn-primary hidden">전체 결과 보기</button>
+        <button type="button" id="btn-new-ladder" class="btn btn-secondary hidden">새 사다리</button>
+        <button type="button" id="btn-edit-setup" class="btn btn-ghost hidden">다시 설정</button>
+      </div>
+    </section>
+
+    <main class="board-card">
+      <div id="status-banner" class="status-banner">
+        이름과 결과를 입력하고 <strong>사다리 타기 시작</strong>을 눌러주세요.
+      </div>
+
+      <!-- 상단 참여자 영역 -->
+      <div id="players-row" class="nodes-row players-row"></div>
+
+      <!-- 중앙 사다리 캔버스 영역 -->
+      <div id="canvas-wrap" class="canvas-wrap">
+        <canvas id="ladder-canvas"></canvas>
+        <div id="blind-curtain" class="blind-curtain hidden">
+          <span>사다리가 가려져 있습니다</span>
+        </div>
+      </div>
+
+      <!-- 하단 결과 영역 -->
+      <div id="results-row" class="nodes-row results-row"></div>
+    </main>
+
+    <section id="summary-section" class="summary-card hidden" aria-live="polite">
+      <div class="summary-header">
+        <h2>전체 결과</h2>
+        <button type="button" id="btn-copy-result" class="btn btn-ghost btn-sm">결과 복사</button>
+      </div>
+      <ul id="summary-list" class="summary-list"></ul>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
